@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Management Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">EM</div>
+      <div>
+        <h1>Employee Management</h1>
+        <p class="subtitle">Manage your workforce in one place</p>
+      </div>
+    </div>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">🌙</button>
+  </header>
+
+ <main class="container">
+    <!-- Stats -->
+    <section class="stats" aria-label="Dashboard statistics">
+      <article class="stat-card stat-total">
+        <span class="stat-label">Total Employees</span>
+        <span class="stat-value" id="statTotal">0</span>
+      </article>
+      <article class="stat-card stat-it">
+        <span class="stat-label">IT Department</span>
+        <span class="stat-value" id="statIT">0</span>
+      </article>
+      <article class="stat-card stat-hr">
+        <span class="stat-label">HR Department</span>
+        <span class="stat-value" id="statHR">0</span>
+      </article>
+      <article class="stat-card stat-mk">
+        <span class="stat-label">Marketing</span>
+        <span class="stat-value" id="statMK">0</span>
+      </article>
+    </section>
+
+    <!-- Form -->
+    <section class="card">
+      <h2 id="formTitle">Add New Employee</h2>
+      <form id="employeeForm" novalidate>
+        <input type="hidden" id="editId" />
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Husnain" />
+            <small class="error" id="errName"></small>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="husnain@company.com" />
+            <small class="error" id="errEmail"></small>
+          </div>
+
+          <div class="field">
+            <label for="department">Department</label>
+            <select id="department">
+              <option value="">-- Select --</option>
+              <option>IT</option>
+              <option>HR</option>
+              <option>Marketing</option>
+              <option>Finance</option>
+              <option>Sales</option>
+            </select>
+            <small class="error" id="errDepartment"></small>
+          </div>
+
+          <div class="field">
+            <label for="designation">Designation</label>
+            <input type="text" id="designation" placeholder="Software Engineer" />
+            <small class="error" id="errDesignation"></small>
+          </div>
+
+          <div class="field">
+            <label for="joiningDate">Joining Date</label>
+            <input type="date" id="joiningDate" />
+            <small class="error" id="errJoiningDate"></small>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Add Employee</button>
+          <button type="button" class="btn btn-ghost" id="cancelBtn" hidden>Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Search + Sort -->
+    <section class="card">
+      <div class="toolbar">
+        <input
+          type="text"
+          id="searchInput"
+          class="search"
+          placeholder="🔍  Search by name or department..."
+        />
+        <select id="sortSelect" class="sort">
+          <option value="">Sort by</option>
+          <option value="name-asc">Name (A–Z)</option>
+          <option value="name-desc">Name (Z–A)</option>
+          <option value="date-asc">Joining Date (Oldest)</option>
+          <option value="date-desc">Joining Date (Newest)</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table class="emp-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Designation</th>
+              <th>Joining Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="employeeTableBody"></tbody>
+        </table>
+        <p id="emptyState" class="empty">No employees found.</p>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
