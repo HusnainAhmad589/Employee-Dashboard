@@ -1,0 +1,1 @@
+A responsive signle page employee management dashboard built with *HTML, CSS and JavaScript No framework all the data stored in browser local storage
