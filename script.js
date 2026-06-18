@@ -92,7 +92,7 @@ form.addEventListener('submit', e => {
   render();
 });
 
-/* ---------- Cancel edit ---------- */
+
 cancelBtn.addEventListener('click', () => {
   editingId = null;
   resetForm();
@@ -106,7 +106,7 @@ function resetForm() {
   cancelBtn.hidden      = true;
 }
 
-/* ---------- Edit / Delete ---------- */
+
 function editEmployee(id) {
   const emp = employees.find(e => e.id === id);
   if (!emp) return;
@@ -129,7 +129,7 @@ function deleteEmployee(id) {
   render();
 }
 
-/* ---------- Search & Sort ---------- */
+
 searchInput.addEventListener('input', e => {
   searchTerm  = e.target.value.toLowerCase();
   currentPage = 1;
@@ -155,7 +155,7 @@ function getVisibleEmployees() {
   return list;
 }
 
-/* ---------- Render ---------- */
+
 function render() {
   renderStats();
   renderTable();
@@ -208,7 +208,7 @@ function renderPagination(pages) {
 }
 function goPage(n) { currentPage = n; renderTable(); }
 
-/* ---------- Helpers ---------- */
+
 function formatDate(iso) {
   if (!iso) return '';
   const d = new Date(iso);
@@ -220,7 +220,7 @@ function escapeHtml(str = '') {
   }[c]));
 }
 
-/* ---------- Dark Mode ---------- */
+
 themeToggle.addEventListener('click', () => {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
@@ -233,10 +233,10 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = saved === 'dark' ? '☀️' : '🌙';
 })();
 
-/* expose handlers for inline onclick */
+
 window.editEmployee   = editEmployee;
 window.deleteEmployee = deleteEmployee;
 window.goPage         = goPage;
 
-/* ---------- Initial Render ---------- */
+
 render();
